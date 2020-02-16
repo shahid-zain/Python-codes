@@ -13,4 +13,3 @@ searchpath=search.send_keys(n) #enter the key
 searchbutton=driver.find_element_by_xpath('//*[@id="search-icon-legacy"]') # point on search button
 
 searchbutton.click()
-
