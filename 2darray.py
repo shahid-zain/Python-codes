@@ -21,7 +21,7 @@ class array2:
             for j in range(len(self.array[i])):
                 print(self.array[i][j],end=" ")
             print()
-obj=array2(int(input("enter the number of rows: ")),int(input("enter the number of columns: ")))
+obj=array2(int(input("enter the number of rows : ")),int(input("enter the number of columns : ")))
 while(True):
     print("1.insert 2.delete 3.traverse 4.exit")
     choice=int(input("enter your choice : "))
