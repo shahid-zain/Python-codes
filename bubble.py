@@ -1,7 +1,14 @@
-lst=[6,5,8,2,1,7,9]
-for i in range(len(lst)):
-    for j in range(len(lst)-1):
-        if lst[j]>lst[j+1]:
-            lst[j],lst[j+1]=lst[j+1],lst[j]
+class ClassA:
+        def __init___(self, val1=20):
+            self.value = val1
+        def method_a(self):
+            return 10+self.value
+class ClassB:
+        def __init__(self, val2=30):
+            self.num=val2
+        def method_b(self, obj):
+            return obj.method_a()+self.num
 
-print(lst)
+obj1=ClassA(20)
+obj2=ClassB(30)
+print(obj2.method_b(obj1))
