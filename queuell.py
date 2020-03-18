@@ -1,38 +1,41 @@
-class node:
-    def __init__(self,value):
-        self.value=value
-        self.next=None
-
-class Queuell:
-    def __init__(self):
-        self.head=None
-        self.tail=None
+class Queuenode:
+    def __init__(self,size):
+        self.queue=[None]*size
+        self.head=0
+        self.tail=0
 
     def enqueue(self):
-        new=node(int(input("enter the value : ")))
-        if self.head==None and self.tail==None:
-            self.head=new
-            self.tail=new
-            print("1st node is inserted")
+        val=int(input("enter the value : "))
+        if self.tail==len(self.queue):
+            self.tail=0
+            if self.queue[self.tail]==None:
+                self.queue[self.tail]=val
+                self.tail+=1
+            else:
+                print("queue is full..")
         else:
-            self.tail.next=new
-            self.tail=new
-            print("node is inserted at tail")
+            if  self.queue[self.tail]==None:
+                self.queue[self.tail]=val
+                self.tail += 1
+            else:
+                print("queue is full..")
 
     def dequeue(self):
-        if self.head==None:
+        if self.queue[self.head]==None:
             print("queue is empty..")
         else:
-            self.head=self.head.next
-            print("node is deleted ")
+            self.queue[self.head]=None
+            self.head += 1
 
     def peek(self):
-        if self.head==None:
-            print("queue is empty..")
+        if self.queue[self.tail-1]!=None:
+            print(self.queue[self.tail-1])
         else:
-            print(self.head.value)
+            print("queue is empty")
+        print(self.queue)
 
-obj=Queuell()
+size=int(input("enter the size of the queue : "))
+obj=Queuenode(size)
 while True:
     n=int(input("1.enqueue 2.dequeue 3.peek 4.exit  : "))
     if n==1:
