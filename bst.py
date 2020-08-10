@@ -74,6 +74,21 @@ class treenode:
             self.postorder(head.right)
             print(head.value)
 
+    def levelorder(self,head):
+        queue=[]
+        if head==None:
+            return
+        else:
+            queue.append(head)
+            while len(queue)>0:
+                print(queue[0].value)
+                node=queue.pop(0)
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+
+
 obj=treenode()
 while True:
     n=int(input("1.create 2.insert 3.preorder 4.inorder 5.postorder 6.delete 7.exit  : "))
@@ -90,6 +105,6 @@ while True:
     elif n==6:
         obj.delete(obj.root,int(input("enter the value to delete : ")))
     elif n==7:
-        exit(0)
+        obj.levelorder(obj.root)
     else:
         pass
