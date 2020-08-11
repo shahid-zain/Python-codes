@@ -28,7 +28,7 @@ def mergeSort(nlist):       #[14,46,43,27,57,41,45,21,70]
             k=k+1
     print("Merging ",nlist)
 
-
+#mergeSort([14,46,43,27,57,41,45,21,70])
 
 def partition(arr, low, high):
     i = (low - 1)  # index of smaller element
