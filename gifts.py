@@ -52,6 +52,26 @@ def mergesort(arr):
             k+=1
 
 
-arr=[14,46,43,27,57,41,45,21,70]
-mergesort(arr)
-print(arr)
+# arr=[14,46,43,27,57,41,45,21,70]
+# mergesort(arr)
+# print(arr)
+
+def partition(arr,low,high):
+    i=low-1
+    pivot=arr[high]
+    for j in range(low,high):
+        if arr[j]<pivot:
+            i+=1
+            arr[j],arr[i]=arr[i],arr[j]
+    arr[i+1],arr[high]=arr[high],arr[i+1]
+    return (i+1)
+
+def quicksort(arr,low,high):
+    if low<high:
+        mid=partition(arr,low,high)
+        quicksort(arr,low,mid-1)
+        quicksort(arr,mid+1,high)
+
+nlist = [14,46,43,27,57,41,45,21,70]
+quicksort(nlist,0,len(nlist)-1)
+print(nlist)

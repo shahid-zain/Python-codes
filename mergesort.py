@@ -59,6 +59,49 @@ def quickSort(arr, low, high):
 
     # Driver code to test above
 
-nlist = [14,46,43,27,57,41,45,21,70]
-quickSort(nlist,0,len(nlist)-1)
-print(nlist)
+# nlist = [14,46,43,27,57,41,45,21,70]
+# quickSort(nlist,0,len(nlist)-1)
+# print(nlist)
+
+import sys
+
+class graph():
+    def __init__(self,v):
+        self.V=v
+        self.graph=[[]]
+
+    def mindistance(self,dist,sptset):
+        min=sys.maxsize
+        for v in range(self.V):
+            if dist[v]<min and sptset[v]==False:
+                min=dist[v]
+                index=v
+        return index
+
+    def dijkstra(self,src):
+        dist=[sys.maxsize]*self.V
+        dist[src]=0
+        sptset=[False]*self.V
+
+        for cout in range(self.V):
+            u=self.mindistance(dist,sptset)
+            sptset[u]=True
+            for v in range(self.V):
+                if self.graph[u][v]>0 and sptset[v]==False and dist[v]>dist[u]+self.graph[u][v]:
+                    dist[v]=dist[u]+self.graph[u][v]
+
+        print(dist)
+
+g = graph(9) 
+g.graph = [[0, 4, 0, 0, 0, 0, 0, 8, 0], 
+		[4, 0, 8, 0, 0, 0, 0, 11, 0], 
+		[0, 8, 0, 7, 0, 4, 0, 0, 2], 
+		[0, 0, 7, 0, 9, 14, 0, 0, 0], 
+		[0, 0, 0, 9, 0, 10, 0, 0, 0], 
+		[0, 0, 4, 14, 10, 0, 2, 0, 0], 
+		[0, 0, 0, 0, 0, 2, 0, 1, 6], 
+		[8, 11, 0, 0, 0, 0, 1, 0, 7], 
+		[0, 0, 2, 0, 0, 0, 6, 7, 0] 
+		]; 
+
+g.dijkstra(0);

@@ -102,6 +102,48 @@ def quicksort(arr,low,high):
         quicksort(arr,low,pivot-1)
         quicksort(arr,pivot+1,high)
 
-nlist = [14,46,43,27,57,41,45,21,70]
-quicksort(nlist,0,len(nlist)-1)
-print(nlist)
+# nlist = [14,46,43,27,57,41,45,21,70]
+# quicksort(nlist,0,len(nlist)-1)
+# print(nlist)
+
+import sys
+class graph:
+    def __init__(self,n):
+        self.V=n
+        self.graph=[[]]
+
+    def minvertex(self,dist,sptset):
+        min=sys.maxsize
+        for v in range(self.V):
+            if dist[v]<min and sptset[v]==False:
+                min=dist[v]
+                index=v
+        return index
+
+    def dijkstra(self,scr):
+        dist=[sys.maxsize]*self.V
+        dist[scr]=0
+        sptset=[False]*self.V
+
+        for cout in range(self.V):
+            last=self.minvertex(dist,sptset)
+            sptset[last]=True
+            for v in range(self.V):
+                if self.graph[last][v]>0 and sptset[v]==False and dist[v]>dist[last]+self.graph[last][v]:
+                    dist[v]=dist[last]+self.graph[last][v]
+
+        print(dist)
+
+g = graph(9) 
+g.graph = [[0, 4, 0, 0, 0, 0, 0, 8, 0], 
+		[4, 0, 8, 0, 0, 0, 0, 11, 0], 
+		[0, 8, 0, 7, 0, 4, 0, 0, 2], 
+		[0, 0, 7, 0, 9, 14, 0, 0, 0], 
+		[0, 0, 0, 9, 0, 10, 0, 0, 0], 
+		[0, 0, 4, 14, 10, 0, 2, 0, 0], 
+		[0, 0, 0, 0, 0, 2, 0, 1, 6], 
+		[8, 11, 0, 0, 0, 0, 1, 0, 7], 
+		[0, 0, 2, 0, 0, 0, 6, 7, 0] 
+		]; 
+
+g.dijkstra(0);
